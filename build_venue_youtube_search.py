@@ -11,10 +11,8 @@ from annotate_seatmaps import VENUES
 
 WORKDIR = Path(__file__).parent
 ORIGINAL_DIR = WORKDIR / "original"
-ANNOTATED_DIR = WORKDIR / "annotated"
 DOCS_DIR = WORKDIR / "docs"
 DOCS_ORIGINAL = DOCS_DIR / "original"
-DOCS_ANNOTATED = DOCS_DIR / "annotated"
 OUTPUT = DOCS_DIR / "index.md"
 
 # Tour order aligned with sakanaction_2027_venue_factcheck.md
@@ -110,23 +108,14 @@ def build_markdown() -> str:
         name = venue["name"]
         name_zh = venue["name_zh"]
         original_img = f"original/{key}.jpg"
-        annotated_img = f"annotated/{key}_annotated.jpg"
 
         lines.append(f"## {i}. {name}")
         lines.append("")
         lines.append(f"**{name_zh}**")
         lines.append("")
-        lines.append("### 座席圖")
-        lines.append("")
-        lines.append(f"**原始圖**（[`{key}.jpg`]({original_img})）")
+        lines.append(f"**原始座席圖**（[`{key}.jpg`]({original_img})）")
         lines.append("")
         lines.append(f"![{name} 原始座席圖]({original_img})")
-        lines.append("")
-        lines.append(
-            f"**標註圖**（歷史推估版，僅供參考；[`{key}_annotated.jpg`]({annotated_img})）"
-        )
-        lines.append("")
-        lines.append(f"![{name} 標註座席圖]({annotated_img})")
         lines.append("")
         lines.append("<details open>")
         lines.append("<summary>展開／收合搜尋連結</summary>")
@@ -178,21 +167,15 @@ def build_markdown() -> str:
 
 
 def sync_images() -> None:
-    """Copy original / annotated seat maps into docs/ for GitHub Pages."""
+    """Copy original seat maps into docs/ for GitHub Pages."""
     DOCS_ORIGINAL.mkdir(parents=True, exist_ok=True)
-    DOCS_ANNOTATED.mkdir(parents=True, exist_ok=True)
 
     for key in TOUR_ORDER:
         src_orig = ORIGINAL_DIR / f"{key}.jpg"
-        src_ann = ANNOTATED_DIR / f"{key}_annotated.jpg"
         if src_orig.is_file():
             shutil.copy2(src_orig, DOCS_ORIGINAL / f"{key}.jpg")
         else:
             print(f"warning: missing {src_orig}")
-        if src_ann.is_file():
-            shutil.copy2(src_ann, DOCS_ANNOTATED / f"{key}_annotated.jpg")
-        else:
-            print(f"warning: missing {src_ann}")
 
 
 def main() -> None:

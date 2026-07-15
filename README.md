@@ -29,7 +29,7 @@ SAKANAQUARIUM 2026-2027「透明」巡演相關場館資料整理：查證分級
 python3 build_venue_youtube_search.py
 ```
 
-會覆寫 [`docs/index.md`](docs/index.md)，並把 `original/`、`annotated/` 座席圖同步到 `docs/`，供 GitHub Pages 顯示。場館來源為 [`annotate_seatmaps.py`](annotate_seatmaps.py) 的 `VENUES`。
+會覆寫 [`docs/index.md`](docs/index.md)，並把 `original/` 座席圖同步到 `docs/`，供 GitHub Pages 顯示。場館來源為 [`annotate_seatmaps.py`](annotate_seatmaps.py) 的 `VENUES`。
 
 ## 主要文件
 
