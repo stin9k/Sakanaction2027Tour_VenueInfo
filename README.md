@@ -1,4 +1,4 @@
-# 2027透明
+# Sakanaction2027Tour_VenueInfo
 
 SAKANAQUARIUM 2026-2027「透明」巡演相關場館資料整理：查證分級、座席示意標註，以及場內視角 YouTube 搜尋閱讀頁。
 
@@ -6,19 +6,17 @@ SAKANAQUARIUM 2026-2027「透明」巡演相關場館資料整理：查證分級
 
 場內視角（POV）搜尋入口：
 
-**https://\<username\>.github.io/\<repo\>/**
-
-將 `<username>`、`<repo>` 換成你的 GitHub 帳號與 repository 名稱。啟用 Pages 後即可使用。
+**https://stin9k.github.io/Sakanaction2027Tour_VenueInfo/**
 
 本地也可直接開啟產生後的 [`docs/index.md`](docs/index.md)。
 
 ## 啟用 GitHub Pages
 
-推送本 repo 後：
+若尚末啟用，推送後請設定：
 
 1. 開啟 repository → **Settings** → **Pages**
 2. **Source** 選 **Deploy from a branch**
-3. Branch 選 `main`（或你的預設分支），資料夾選 **`/docs`**
+3. Branch 選 `main`，資料夾選 **`/docs`**
 4. 儲存後稍待建置完成，開啟上方的 Pages 網址
 
 ## 重新產生閱讀頁
