@@ -37,6 +37,11 @@ ALT_NAMES: dict[str, str] = {
 
 ZONE_ORDER = ("SS", "S", "A", "B")
 
+# Repo files are outside /docs; link to GitHub blob so Pages can open them.
+GITHUB_BLOB = (
+    "https://github.com/stin9k/Sakanaction2027Tour_VenueInfo/blob/main"
+)
+
 
 def youtube_search_url(query: str) -> str:
     return f"https://www.youtube.com/results?search_query={quote_plus(query)}"
@@ -81,14 +86,14 @@ def build_markdown() -> str:
         "",
         "## 使用方式",
         "",
-        "1. 展開下方場館，點擊對應票種或樓層的搜尋連結。",
+        "1. 點擊各場館下方對應票種或樓層的搜尋連結。",
         "2. 篩選標題含「見え方」「視野」「POV」「席から」等關鍵字的影片。",
         "3. 依頁尾**檢查清單**核對後再收錄為參考資料。",
         "",
         "## 可信度聲明",
         "",
         "- YouTube 粉絲／觀眾影片僅屬**概略可用**：適合了解距離感、高度與大致視野。",
-        "- **不可**替代官方座席表、售票配置或 technical rider（見 [`venues_Dataset.md`](../venues_Dataset.md)）。",
+        f"- **不可**替代官方座席表、售票配置或 technical rider（見 [`venues_Dataset.md`]({GITHUB_BLOB}/venues_Dataset.md)）。",
         "- 2027 本巡演多數場次尚未舉行；搜尋結果多為同場館**其他演唱會**，舞台配置可能不同。",
         "- SS／S／A／B 為票種標籤，各巡演分區未必一致，標題標記也常有誤差。",
         "",
@@ -117,8 +122,8 @@ def build_markdown() -> str:
         lines.append("")
         lines.append(f"![{name} 原始座席圖]({original_img})")
         lines.append("")
-        lines.append("<details open>")
-        lines.append("<summary>展開／收合搜尋連結</summary>")
+        # Avoid Markdown tables inside <details>: kramdown leaves them unparsed.
+        lines.append("### YouTube 搜尋連結")
         lines.append("")
         lines.append("| 類型 | 關鍵字 | 連結 |")
         lines.append("|---|---|---|")
@@ -131,8 +136,6 @@ def build_markdown() -> str:
             lines.append("")
             lines.append("> 此場為單層平面配置（無常設高架看台）；票種僅 SS／S／A。")
 
-        lines.append("")
-        lines.append("</details>")
         lines.append("")
 
     lines.extend(
@@ -152,9 +155,9 @@ def build_markdown() -> str:
             "",
             "## 相關文件",
             "",
-            "- [場館資料分級](../venues_Dataset.md)（`venues_Dataset.md`）",
-            "- [補查清單](../venue_research_backlog.md)（`venue_research_backlog.md`）",
-            "- [查證報告](../sakanaction_2027_venue_factcheck.md)（`sakanaction_2027_venue_factcheck.md`）",
+            f"- [場館資料分級]({GITHUB_BLOB}/venues_Dataset.md)（`venues_Dataset.md`）",
+            f"- [補查清單]({GITHUB_BLOB}/venue_research_backlog.md)（`venue_research_backlog.md`）",
+            f"- [查證報告]({GITHUB_BLOB}/sakanaction_2027_venue_factcheck.md)（`sakanaction_2027_venue_factcheck.md`）",
             "",
             "---",
             "",
